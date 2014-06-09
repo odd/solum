@@ -43,8 +43,10 @@ libraryDependencies ++= Seq(
     "io.spray" %% "spray-client" % SprayVersion,
     "io.spray" %% "spray-util" % SprayVersion,
     "io.spray" %% "spray-caching" % SprayVersion,
-    "com.amazonaws" % "aws-java-sdk" % "1.7.9"
-    )
+    "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
+    "ch.qos.logback" % "logback-classic" % "1.1.2"
+    //"com.amazonaws" % "aws-java-sdk" % "1.7.9"
+)
 
 assemblySettings
 
