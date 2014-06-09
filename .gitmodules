@@ -1,3 +1,0 @@
-[submodule "solum-deploy"]
-	path = deploy
-	url = git@github.com:odd/solum-deploy.git
