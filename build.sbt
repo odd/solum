@@ -44,7 +44,8 @@ libraryDependencies ++= Seq(
     "io.spray" %% "spray-util" % SprayVersion,
     "io.spray" %% "spray-caching" % SprayVersion,
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
-    "ch.qos.logback" % "logback-classic" % "1.1.2"
+    "ch.qos.logback" % "logback-classic" % "1.1.2",
+    "com.github.mauricio" % "mysql-async_2.10" % "0.2.12"
     //"com.amazonaws" % "aws-java-sdk" % "1.7.9"
 )
 
@@ -62,6 +63,13 @@ dockerSettings
 
 docker <<= docker.dependsOn(assembly)
 
+imageName in docker := {
+  ImageName(
+    namespace = Some(organization.value),
+    repository = name.value,
+    tag = Some("v" + version.value))
+}
+
 dockerfile in docker := {
   val artifact = (outputPath in assembly).value
   val artifactTargetPath = s"/app/${artifact.name}"
@@ -69,7 +77,7 @@ dockerfile in docker := {
     from("dockerfile/java")
     maintainer("Odd Möller", "odd.moller@gmail.com")
     add(artifact, artifactTargetPath)
-    expose(8080)
+    expose(8080, 3306)
     entryPoint("java", "-jar", artifactTargetPath)
   }
 }
