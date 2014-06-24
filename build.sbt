@@ -45,7 +45,8 @@ libraryDependencies ++= Seq(
     "io.spray" %% "spray-caching" % SprayVersion,
     "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2",
     "ch.qos.logback" % "logback-classic" % "1.1.2",
-    "com.github.mauricio" % "mysql-async_2.10" % "0.2.12"
+    "com.github.mauricio" %% "mysql-async" % "0.2.14-SNAPSHOT"
+    //"com.github.mauricio" % "mysql-async_2.10" % "0.2.12"
     //"com.amazonaws" % "aws-java-sdk" % "1.7.9"
 )
 
